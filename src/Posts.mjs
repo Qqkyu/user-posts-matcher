@@ -3,14 +3,14 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const fetch = require("node-fetch");
 
-let cache = [];
+let postsCache = [];
 
-async function fetchPosts() {
-    if (cache.length == 0) {
+async function requestPosts() {
+    if (postsCache.length == 0) {
         const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
-        cache = await res.json();
+        postsCache = await res.json();
     }
-    return cache;
+    return postsCache;
 }
 
-export default fetchPosts;
+export default requestPosts;
