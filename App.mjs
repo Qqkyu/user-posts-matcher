@@ -2,6 +2,21 @@ import requestMatches from "./src/Match.mjs";
 import requestPosts from "./src/Posts.mjs";
 import requestUsers from "./src/Users.mjs";
 
+console.log(
+    "Liczba postów napisanych przez poszczególnych userów:",
+    await usersPostsCount()
+);
+
+console.log(
+    "Lista nieunikalnych tytułów postów:",
+    await duplicateTopicTitles()
+);
+
+console.log(
+    "Użytkownicy który leżą najbliżej poszczególnych użytkowników:",
+    await matchClosestUsers()
+);
+
 async function usersPostsCount() {
     const [matches, infos] = [await requestMatches(), []];
     for (const userId in matches) {
